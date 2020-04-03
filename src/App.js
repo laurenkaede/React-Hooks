@@ -1,25 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 
 function App() {
+  const [movies, setMovies] = useState (
+    [
+      "The Matrix",
+      "Lord of the Rings",
+      "Avengers"
+    ]
+  );
+
+  const allMovies = movies.map( (movie, index) => {
+    return <li key={index}>{movie}</li>
+  });
+
+  const addMovie = () => {
+    setMovies(
+      [...movies, "Harry Potter"]
+    ) 
+  };
+  
+// Function setMovies updates state //
+// ...movies adds all movies from its array //
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+
+    <ul>
+      {allMovies}
+    </ul>
+
+    <button onClick={addMovie}>Add Movie</button>
+
+   </div>
   );
 }
 
